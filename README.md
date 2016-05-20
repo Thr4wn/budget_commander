@@ -1,2 +1,2 @@
 # ppfm
-Programer's PFM (Personam Finance Management)
+Programer's PFM (Personal Finance Management)
