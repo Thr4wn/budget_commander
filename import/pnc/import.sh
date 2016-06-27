@@ -1,8 +1,12 @@
-#TODO: execute selenium via vagrant
+
 here=`dirname $0`
-echo $here
 ppfm_root=$here/../..
+
+$here/download.sh
+
 stop_day=`psql -U sbird -d ppfm -c 'select max(day) from activity'  | awk NR==3`
+echo pnc preimport.sh: stop_day = $stop_day
 $here/convert.rb $stop_day
-$ppfm_root/db/import.sh
+
+#$here/load.sh
 

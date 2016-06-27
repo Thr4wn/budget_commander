@@ -6,9 +6,11 @@ stopDate = ARGV[0]
 stopDate = Date.parse(stopDate) if stopDate
 
 CSV.open("#{privateDir}/imported.csv", "wb") do |output|
-  CSV.foreach("#{privateDir}/activity.csv") do |input_row|
+  CSV.foreach("#{privateDir}/pnc-c-activity.csv") do |input_row|
     unless input_row[0] == "Date"
-      break if Date.strptime(input_row[0], "%m/%d/%Y") == stopDate
+      if Date.strptime(input_row[0], "%m/%d/%Y") == stopDate
+        puts "convert.rb: stopping at stop date #{stopDate}"
+      end
       row = []
       row += input_row[0..1]
       debit = - input_row[2].delete('$').delete(',').to_f

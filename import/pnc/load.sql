@@ -9,7 +9,7 @@ CREATE TABLE temp (
     category TEXT
 );
 
-COPY temp FROM '/Users/sbird/code/ppfm/private/imported.csv' DELIMITER ',' CSV;
+COPY temp FROM :converted_csv_file DELIMITER ',' CSV;
 
 INSERT INTO activity (
     day,
